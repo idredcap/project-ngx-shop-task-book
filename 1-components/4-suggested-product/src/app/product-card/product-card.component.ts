@@ -1,4 +1,6 @@
-import { Component } from '@angular/core';
+import { Component, Input, Output, EventEmitter } from '@angular/core';
+import { IProduct } from 'shared/mocks/1-components/product';
+// import { Ipro } from '../../../../shared/mocks/1-components/product';
 
 @Component({
   selector: 'ngx-shop-product-card',
@@ -6,4 +8,10 @@ import { Component } from '@angular/core';
 })
 export class ProductCardComponent {
 
+  @Input() public product: IProduct = {} as IProduct;
+  @Output() public goToProduct: EventEmitter<any> = new EventEmitter();
+
+  public redirectTo(): void {
+    this.goToProduct.emit('Переход на компонент товара');
+  }
 }
